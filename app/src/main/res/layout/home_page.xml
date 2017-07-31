@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+<com.tongchengtianqi.view.SearchView
+    android:id="@+id/search_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"></com.tongchengtianqi.view.SearchView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+    <android.support.design.widget.TabLayout
+        android:id="@+id/home_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:tabSelectedTextColor="@color/green"
+        app:tabIndicatorColor="@color/green"
+        app:tabIndicatorHeight="1dp"
+        app:tabTextColor="@android:color/background_dark"
+        />
+        <ImageView
+            android:id="@+id/more_channer"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:background="@mipmap/more_channer"/>
+    </LinearLayout>
+        
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_vp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/white"></android.support.v4.view.ViewPager>
+           
+</LinearLayout>
+

@@ -1,6 +1,7 @@
 package com.tongchengtianqi.fragment;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,12 +12,14 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.tongchengtianqi.R;
 import com.tongchengtianqi.activity.MainActivity;
 import com.tongchengtianqi.activity.SearchActivity;
+import com.tongchengtianqi.http.OkhttpRequest;
 import com.tongchengtianqi.view.SearchView;
 
 import java.util.ArrayList;
@@ -25,7 +28,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment  {
+public class HomeFragment extends Fragment implements OkhttpRequest.CallBackToData {
     private MainActivity mainActivity;
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -50,7 +53,7 @@ public class HomeFragment extends Fragment  {
         viewPager = view.findViewById(R.id.home_vp);
         searchView = view.findViewById(R.id.search_view);
         more_channer = view.findViewById(R.id.more_channer);
-
+       // OkhttpRequest.getHttp(Urls.CHANNEL_DATA, ChannelTablayout.DataBean.ChannelsBean.class,this);
         initListener();
         initData();
 
@@ -90,6 +93,8 @@ public class HomeFragment extends Fragment  {
        searchView.setSearch_edOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               InputMethodManager inputmanger = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+               inputmanger.hideSoftInputFromWindow(getActivity().getWindow().peekDecorView().getWindowToken(), 0);
                Intent intent = new Intent(getContext(), SearchActivity.class);
                startActivity(intent);
            }
@@ -115,7 +120,10 @@ public class HomeFragment extends Fragment  {
     }
 
 
+    @Override
+    public void backData(Object data) {
 
+    }
 }
 
 
